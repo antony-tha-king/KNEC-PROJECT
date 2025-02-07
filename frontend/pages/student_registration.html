@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Smart School - Student Registration</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/registration.css" rel="stylesheet">
+</head>
+
+<body class="registration-page">
+    <div class="background-shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+    </div>
+    
+
+
+
+    <div class="container-fluid">
+        <div class="row min-vh-100 align-items-center justify-content-center">
+            <div class="col-11 col-sm-10 col-md-8 col-lg-7">
+                <div class="registration-box">
+                    <div class="text-center mb-4">
+                        <h1 class="welcome-text">Student Registration</h1>
+                        <p class="account-link">Create your account to join Smart School</p>
+                    </div>
+
+                    <div class="progress-steps">
+                        <div class="step-indicator active" data-step="1">1</div>
+                        <div class="step-indicator" data-step="2">2</div>
+                        <div class="step-indicator" data-step="3">3</div>
+                        <div class="step-indicator" data-step="4">4</div>
+                    </div>
+
+                    <form id="registrationForm">
+                        <!-- Step 1: Personal Information -->
+                        <div class="form-step active">
+                            <h3>Personal Information</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-primary" onclick="nextStep()">Next <i class="fas fa-arrow-right ml-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Course Selection -->
+                        <div class="form-step">
+                            <h3>Course Selection</h3>
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <select class="form-control" id="department" required onchange="loadCourses()" data-selected="false">
+                                    <option value="" selected disabled>Select Department</option>
+                                    <option value="Artisan Certificates">Artisan Certificates</option>
+                                    <option value="Craft Certificates">Craft Certificates</option>
+                                    <option value="Diploma Courses">Diploma Courses</option>
+                                    <option value="Higher Diplomas">Higher Diplomas</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="course">Course</label>
+                                <select class="form-control" id="course" required data-selected="false">
+                                    <option value="" selected disabled>Select Course</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="yearOfStudy">Year of Study</label>
+                                <select class="form-control" id="yearOfStudy" required>
+                                    <option value="">Select Year</option>
+                                    <option value="1">First Year</option>
+                                    <option value="2">Second Year</option>
+                                    <option value="3">Third Year</option>
+                                    <option value="4">Fourth Year</option>
+                                </select>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep()"><i class="fas fa-arrow-left mr-2"></i> Previous</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep()">Next <i class="fas fa-arrow-right ml-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Guardian Information -->
+                        <div class="form-step">
+                            <h3>Guardian Information</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="guardianName">Guardian's Full Name</label>
+                                        <input type="text" class="form-control" id="guardianName" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="guardianPhone">Guardian's Phone Number</label>
+                                        <input type="tel" class="form-control" id="guardianPhone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="guardianEmail">Guardian's Email (Optional)</label>
+                                        <input type="email" class="form-control" id="guardianEmail">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="guardianRelationship">Relationship to Student</label>
+                                        <select class="form-control" id="guardianRelationship" required>
+                                            <option value="">Select Relationship</option>
+                                            <option value="Parent">Parent</option>
+                                            <option value="Guardian">Guardian</option>
+                                            <option value="Sibling">Sibling</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="alternativeContact">Alternative Contact Number (Optional)</label>
+                                <input type="tel" class="form-control" id="alternativeContact">
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep()"><i class="fas fa-arrow-left mr-2"></i> Previous</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep()">Next <i class="fas fa-arrow-right ml-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Account Setup -->
+                        <div class="form-step">
+                            <h3>Account Setup</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <div class="password-input">
+                                            <input type="password" class="form-control" id="password" required>
+                                            <i class="fas fa-eye-slash password-toggle"></i>
+                                        </div>
+                                        <div class="password-strength">
+                                            <div class="password-strength-bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Confirm Password</label>
+                                        <div class="password-input">
+                                            <input type="password" class="form-control" id="confirmPassword" required>
+                                            <i class="fas fa-eye-slash password-toggle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep()"><i class="fas fa-arrow-left mr-2"></i> Previous</button>
+                                <button type="submit" class="btn btn-primary">Register <i class="fas fa-check ml-2"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <a href="../index.html" class="account-link">
+                            <span>Already have an account? Sign in here</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form steps functionality
+
+        let currentStep = 0;
+        showStep(currentStep);
+
+        function showStep(step) {
+            const steps = document.querySelectorAll('.form-step');
+            steps.forEach((s, index) => {
+                s.style.display = index === step ? 'block' : 'none';
+            });
+        }
+
+        function updateProgressSteps(currentStep) {
+            document.querySelectorAll('.step-indicator').forEach((step, index) => {
+                if (index < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (index === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        function checkPasswordStrength(password) {
+            const strengthBar = document.querySelector('.password-strength-bar');
+            let strength = 0;
+            
+            if (password.length >= 8) strength++;
+            if (password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^A-Za-z0-9]/)) strength++;
+
+            strengthBar.className = 'password-strength-bar';
+            if (strength === 0) strengthBar.style.width = '0';
+            else if (strength <= 2) strengthBar.classList.add('weak');
+            else if (strength === 3) strengthBar.classList.add('medium');
+            else strengthBar.classList.add('strong');
+        }
+
+        // Add event listeners
+        document.getElementById('password').addEventListener('input', (e) => {
+            checkPasswordStrength(e.target.value);
+        });
+
+        function nextStep() {
+            const steps = document.querySelectorAll('.form-step');
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+                updateProgressSteps(currentStep);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+                updateProgressSteps(currentStep);
+            }
+        }
+
+        // Course data structure
+        const courseData = {
+            'Artisan Certificates': {
+                '0801': 'Clerk-Typist',
+                '0802': 'Salesmanship',
+                '0803': 'Storekeeping'
+            },
+            'Craft Certificates': {
+                '1801': 'Secretarial Studies',
+                '1802': 'Marketing',
+                '1803': 'Supplies Management',
+                '1804': 'Accounting',
+                '1805': 'Banking & Finance',
+                '1806': 'Business Administration',
+                '1807': 'Co-operative Management',
+                '1808': 'Personnel Management',
+                '1809': 'Transport Management',
+                '1813': 'Library, Archives & Information Studies'
+            },
+            'Diploma Courses': {
+                '2801': 'Diploma in Secretarial Studies',
+                '2802': 'Diploma in Marketing',
+                '2803': 'Diploma in Supplies Management',
+                '2804': 'Diploma in Accountancy',
+                '2805': 'Diploma in Banking & Finance',
+                '2806': 'Diploma in Business Administration',
+                '2807': 'Diploma in Co-operative Management',
+                '2808': 'Diploma in Personnel Management',
+                '2813': 'Diploma in Information Studies',
+                '2814': 'Diploma in Entrepreneurship Development'
+            },
+            'Higher Diplomas': {
+                '3806': 'Higher Diploma in Business Management',
+                '3808': 'Higher Diploma in Human Resource Management',
+                '3814': 'Higher Diploma in Entrepreneurship Development'
+            }
+        };
+
+        function loadCourses() {
+            const department = document.getElementById('department').value;
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '<option value="">Select Course</option>';
+
+            if (department && courseData[department]) {
+                Object.entries(courseData[department]).forEach(([code, name]) => {
+                    courseSelect.innerHTML += `<option value="${code}">${code} - ${name}</option>`;
+                });
+            }
+        }
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                department: document.getElementById('department').value,
+                courseCode: document.getElementById('course').value,
+                courseName: courseData[document.getElementById('department').value][document.getElementById('course').value],
+                yearOfStudy: document.getElementById('yearOfStudy').value,
+                guardianName: document.getElementById('guardianName').value,
+                guardianPhone: document.getElementById('guardianPhone').value,
+                guardianEmail: document.getElementById('guardianEmail').value || null,
+                guardianRelationship: document.getElementById('guardianRelationship').value,
+                alternativeContact: document.getElementById('alternativeContact').value || null,
+                password: document.getElementById('password').value
+            };
+
+            try {
+                const response = await fetch('/api/students/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Registration successful!');
+                    window.location.href = '../index.html';
+                } else {
+                    const error = await response.json();
+                    alert(error.message || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again later.');
+            }
+        });
+
+        // Initialize
+        updateProgressSteps(0);
+
+        // Password visibility toggle
+        document.querySelectorAll('.password-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        // Handle select element text color after selection
+        function updateSelectColor(selectElement) {
+            if (selectElement.value) {
+                selectElement.style.color = '#ffffff';
+            }
+        }
+
+        // Update the department select element
+        document.getElementById('department').addEventListener('change', function() {
+            updateSelectColor(this);
+            loadCourses();
+        });
+
+        // Update the course select element
+        document.getElementById('course').addEventListener('change', function() {
+            updateSelectColor(this);
+        });
+
+        // Update the yearOfStudy select element
+        document.getElementById('yearOfStudy').addEventListener('change', function() {
+            updateSelectColor(this);
+        });
+
+        // Update the guardianRelationship select element
+        document.getElementById('guardianRelationship').addEventListener('change', function() {
+            updateSelectColor(this);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Teacher Portal - Smart School</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dark-theme.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="text-center">SMART SCHOOL</h3>
+            <div class="user-info mt-3">
+                <img src="../assets/default-avatar.png" alt="Teacher" class="rounded-circle" width="50">
+                <div class="mt-2">
+                    <h6 class="mb-0">Mrs. Smith</h6>
+                    <small class="text-secondary">Teacher ID: TCH2023001</small>
+                </div>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="teacher_portal.html" class="nav-link active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="attendance.html" class="nav-link">
+                    <i class="fas fa-user-check"></i>
+                    Mark Attendance
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    Classes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-tasks"></i>
+                    Assignments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="chat.html" class="nav-link">
+                    <i class="fas fa-comments"></i>
+                    Chat
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Reports
+                </a>
+            </li>
+            <li class="nav-item mt-4">
+                <a href="../index.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="page-title">Teacher Dashboard</h1>
+
+        <!-- Class Schedule Section -->
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Today's Classes</h5>
+                    </div>
+                    <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Class</th>
+                                            <th>Subject</th>
+                                            <th>Room</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Class schedule will be loaded dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Section -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Quick Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-3">
+                                <a href="attendance.html" class="btn btn-primary quick-action-btn">
+                                    <i class="fas fa-user-check"></i>
+                                    <div>Mark Attendance</div>
+                                </a>
+                                <a href="#" class="btn btn-primary quick-action-btn">
+                                    <i class="fas fa-file-alt"></i>
+                                    <div>Create Assignment</div>
+                                </a>
+                                <a href="#" class="btn btn-primary quick-action-btn">
+                                    <i class="fas fa-check-square"></i>
+                                    <div>Grade Submissions</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Study Materials -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Upload Study Materials</h5>
+                    </div>
+                    <div class="card-body">
+
+                            <form>
+                                <div class="form-group">
+                                    <label for="subject">Select Subject</label>
+                                    <select class="form-control" id="subject" required>
+                                        <option value="">Choose Subject...</option>
+                                        <!-- Subjects will be loaded dynamically -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="class">Select Class</label>
+                                    <select class="form-control" id="class" required>
+                                        <option value="">Choose Class...</option>
+                                        <!-- Classes will be loaded dynamically -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" id="title" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" id="description" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="file">Upload File</label>
+                                    <input type="file" class="form-control-file" id="file" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+
+</body>
+</html>

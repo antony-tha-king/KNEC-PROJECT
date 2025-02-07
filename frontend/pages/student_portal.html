@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Student Portal - Smart School</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dark-theme.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="text-center">SMART SCHOOL</h3>
+            <div class="user-info mt-3">
+                <img src="../assets/default-avatar.png" alt="Student" class="rounded-circle" width="50">
+                <div class="mt-2">
+                    <h6 class="mb-0">John Doe</h6>
+                    <small class="text-secondary">Student ID: AC2023001</small>
+                </div>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="student_portal.html" class="nav-link active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="attendance.html" class="nav-link">
+                    <i class="fas fa-calendar-check"></i>
+                    Attendance
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    Courses
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="fees.html" class="nav-link">
+                    <i class="fas fa-money-bill"></i>
+                    Fees
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="chat.html" class="nav-link">
+                    <i class="fas fa-comments"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-file-alt"></i>
+                    Results
+                </a>
+            </li>
+            <li class="nav-item mt-4">
+                <a href="../index.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+            <!-- Course Info -->
+            <div class="row mb-4">
+                <div class="col-lg-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h3>Artisan Certificate in Clerk-Typist</h3>
+                            <p class="text-muted">Student ID: AC2023001 | Semester: 1 | Year: 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
+                            <h4>85%</h4>
+                            <p class="text-muted mb-0">Attendance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                            <h4>5</h4>
+                            <p class="text-muted mb-0">Current Modules</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-tasks fa-3x text-primary mb-3"></i>
+                            <h4>3</h4>
+                            <p class="text-muted mb-0">Pending Tasks</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                            <h4>Good</h4>
+                            <p class="text-muted mb-0">Academic Standing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timetable and Announcements -->
+            <div class="row mb-4">
+                <div class="col-lg-8 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Today's Schedule</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Subject</th>
+                                            <th>Teacher</th>
+                                            <th>Room</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>08:00 - 09:30</td>
+                                            <td>Typewriting</td>
+                                            <td>Mrs. Smith</td>
+                                            <td>Lab 101</td>
+                                        </tr>
+                                        <tr>
+                                            <td>09:45 - 11:15</td>
+                                            <td>Business Organisation</td>
+                                            <td>Mr. Johnson</td>
+                                            <td>Room 203</td>
+                                        </tr>
+                                        <tr>
+                                            <td>11:30 - 13:00</td>
+                                            <td>Book-Keeping</td>
+                                            <td>Ms. Davis</td>
+                                            <td>Room 205</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Recent Announcements</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="announcement-item mb-3">
+                                <h6>Typing Speed Test</h6>
+                                <p class="text-muted mb-1">Monthly typing speed assessment scheduled for next week.</p>
+                                <small class="text-primary">2 hours ago</small>
+                            </div>
+                            <div class="announcement-item">
+                                <h6>Course Materials Updated</h6>
+                                <p class="text-muted mb-1">New materials uploaded for Business Organisation module.</p>
+                                <small class="text-primary">1 day ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Modules -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Current Modules</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5>Typewriting</h5>
+                                            <p class="text-muted">30 WPM target speed</p>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar" style="width: 75%">75%</div>
+                                            </div>
+                                            <a href="#" class="btn btn-sm btn-primary">View Materials</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5>Business Organisation</h5>
+                                            <p class="text-muted">Fundamentals and principles</p>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar" style="width: 60%">60%</div>
+                                            </div>
+                                            <a href="#" class="btn btn-sm btn-primary">View Materials</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5>Book-Keeping</h5>
+                                            <p class="text-muted">Basic accounting principles</p>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar" style="width: 45%">45%</div>
+                                            </div>
+                                            <a href="#" class="btn btn-sm btn-primary">View Materials</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

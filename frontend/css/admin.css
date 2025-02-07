@@ -1,0 +1,261 @@
+/* Layout Styles */
+.admin-container {
+	padding: 2rem;
+	background-color: #f8f9fa;
+	min-height: 100vh;
+}
+
+.page-title {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #2c3e50;
+	margin-bottom: 1.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid #e9ecef;
+}
+
+/* Dashboard Grid Layout */
+.dashboard-stats {
+	display: grid;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+	.dashboard-stats {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1200px) {
+	.dashboard-stats {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* Admin Dashboard Styles */
+.stats-card {
+	transition: transform 0.3s ease;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.stats-card:hover {
+	transform: translateY(-5px);
+}
+
+.stats-card .card-body {
+	padding: 1.5rem;
+}
+
+.stats-card i {
+	font-size: 2.5rem;
+	color: #007bff;
+}
+
+.stats-card h5 {
+	color: #6c757d;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.stats-card h2 {
+	color: #343a40;
+	font-weight: 600;
+}
+
+/* Card Improvements */
+.card {
+	border: none;
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	margin-bottom: 1.5rem;
+}
+
+.card-header {
+	background-color: #fff;
+	border-bottom: 1px solid #e9ecef;
+	padding: 1.25rem;
+}
+
+.card-header h5 {
+	margin: 0;
+	color: #2c3e50;
+	font-weight: 600;
+}
+
+/* Sidebar styles */
+.admin-sidebar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 250px;
+	background: #2c3e50;
+	padding: 1rem;
+	color: white;
+	z-index: 1000;
+}
+
+.main-content {
+	margin-left: 250px;
+	padding: 2rem;
+}
+
+/* Navigation improvements */
+.admin-nav {
+	list-style: none;
+	padding: 0;
+	margin: 2rem 0;
+}
+
+.admin-nav-item {
+	padding: 0.75rem 1rem;
+	margin: 0.25rem 0;
+	border-radius: 0.25rem;
+	transition: all 0.3s ease;
+}
+
+.admin-nav-item:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-nav-item.active {
+	background-color: #3498db;
+}
+
+/* Tables Styling */
+.table-wrapper {
+	background: white;
+	border-radius: 0.5rem;
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	padding: 1rem;
+	margin-bottom: 2rem;
+}
+
+.table-custom {
+	width: 100%;
+	margin-bottom: 0;
+}
+
+.table-custom thead th {
+	background-color: #f8f9fa;
+	border-bottom: 2px solid #dee2e6;
+	color: #495057;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.5px;
+	padding: 1rem;
+}
+
+.table-custom td {
+	vertical-align: middle;
+	color: #6c757d;
+	padding: 1rem;
+}
+
+/* Quick Actions */
+.quick-action-btn {
+	padding: 1rem;
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+
+.quick-action-btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quick-action-btn i {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+/* Quick actions grid */
+.quick-actions-grid {
+	display: grid;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+	.quick-actions-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 992px) {
+	.quick-actions-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* Attendance Page Specific */
+.attendance-card {
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.attendance-card .card-header {
+	background-color: #007bff;
+	color: white;
+	padding: 1rem 1.5rem;
+}
+
+.attendance-overview {
+	display: grid;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+	.attendance-overview {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.progress {
+	height: 10px;
+	border-radius: 5px;
+}
+
+.progress-bar {
+	background-color: #007bff;
+}
+
+.badge {
+	padding: 0.5em 1em;
+	border-radius: 30px;
+	font-weight: 500;
+}
+
+.badge-success {
+	background-color: #28a745;
+}
+
+.badge-danger {
+	background-color: #dc3545;
+}
+
+/* QR Code Container */
+#qrCodeContainer {
+	padding: 2rem;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.05);
+	margin: 1rem auto;
+	max-width: 250px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+	.stats-card {
+		margin-bottom: 1rem;
+	}
+	
+	.quick-action-btn {
+		margin-bottom: 1rem;
+	}
+}

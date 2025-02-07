@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Fees Management - Smart School</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/dark-theme.css" rel="stylesheet">
+</head>
+
+
+<body>
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<div class="sidebar-header">
+			<h3 class="text-center">SMART SCHOOL</h3>
+			<div class="user-info mt-3">
+				<img src="../assets/default-avatar.png" alt="Student" class="rounded-circle" width="50">
+				<div class="mt-2">
+					<h6 class="mb-0">John Doe</h6>
+					<small class="text-secondary">Student ID: AC2023001</small>
+				</div>
+			</div>
+		</div>
+		<ul class="nav-menu">
+			<li class="nav-item">
+				<a href="student_portal.html" class="nav-link">
+					<i class="fas fa-tachometer-alt"></i>
+					Dashboard
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="attendance.html" class="nav-link">
+					<i class="fas fa-calendar-check"></i>
+					Attendance
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link">
+					<i class="fas fa-book"></i>
+					Courses
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="fees.html" class="nav-link active">
+					<i class="fas fa-money-bill"></i>
+					Fees
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="chat.html" class="nav-link">
+					<i class="fas fa-comments"></i>
+					Chat
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link">
+					<i class="fas fa-file-alt"></i>
+					Results
+				</a>
+			</li>
+			<li class="nav-item mt-4">
+				<a href="../index.html" class="nav-link text-danger">
+					<i class="fas fa-sign-out-alt"></i>
+					Logout
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- Main Content -->
+	<div class="main-content">
+		<h1 class="page-title">Fees Management</h1>
+			<!-- Fee Summary Cards -->
+			<div class="row mb-4">
+				<div class="col-lg-4 col-md-6 mb-4">
+					<div class="card">
+						<div class="card-body text-center">
+							<i class="fas fa-money-bill-wave fa-3x mb-3"></i>
+							<h5>Total Fees</h5>
+							<h2>$5000</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-4">
+					<div class="card">
+						<div class="card-body text-center">
+							<i class="fas fa-check-circle fa-3x mb-3 text-success"></i>
+							<h5>Paid Amount</h5>
+							<h2>$3500</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-4">
+					<div class="card">
+						<div class="card-body text-center">
+							<i class="fas fa-exclamation-circle fa-3x mb-3 text-warning"></i>
+							<h5>Due Amount</h5>
+							<h2>$1500</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fee Details and Payment Section -->
+			<div class="row">
+				<div class="col-lg-8 mb-4">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="mb-0">Fee Details</h5>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Fee Type</th>
+											<th>Amount</th>
+											<th>Due Date</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Tuition Fee</td>
+											<td>$3000</td>
+											<td>2024-01-15</td>
+											<td><span class="badge badge-success">Paid</span></td>
+										</tr>
+										<tr>
+											<td>Library Fee</td>
+											<td>$500</td>
+											<td>2024-01-15</td>
+											<td><span class="badge badge-success">Paid</span></td>
+										</tr>
+										<tr>
+											<td>Lab Fee</td>
+											<td>$1000</td>
+											<td>2024-02-15</td>
+											<td><span class="badge badge-warning">Pending</span></td>
+										</tr>
+										<tr>
+											<td>Sports Fee</td>
+											<td>$500</td>
+											<td>2024-02-15</td>
+											<td><span class="badge badge-warning">Pending</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 mb-4">
+					<div class="card">
+						<div class="card-header">
+							<h5 class="mb-0">Make Payment</h5>
+						</div>
+
+						<div class="card-body">
+							<form>
+								<div class="form-group">
+									<label for="feeType">Select Fee Type</label>
+									<select class="form-control" id="feeType" required>
+										<option value="">Choose Fee Type...</option>
+										<option value="lab">Lab Fee ($1000)</option>
+										<option value="sports">Sports Fee ($500)</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="amount">Amount</label>
+									<input type="number" class="form-control" id="amount" required>
+								</div>
+								<div class="form-group">
+									<label for="paymentMethod">Payment Method</label>
+									<select class="form-control" id="paymentMethod" required>
+										<option value="">Choose Payment Method...</option>
+										<option value="card">Credit/Debit Card</option>
+										<option value="bank">Bank Transfer</option>
+										<option value="mpesa">M-Pesa</option>
+									</select>
+								</div>
+								<button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Payment History -->
+			<div class="card">
+				<div class="card-header">
+					<h5 class="mb-0">Payment History</h5>
+				</div>
+
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>Receipt No</th>
+											<th>Date</th>
+											<th>Fee Type</th>
+											<th>Amount</th>
+											<th>Payment Method</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>RCP001</td>
+											<td>2024-01-10</td>
+											<td>Tuition Fee</td>
+											<td>$3000</td>
+											<td>Bank Transfer</td>
+											<td><span class="badge badge-success">Success</span></td>
+										</tr>
+										<tr>
+											<td>RCP002</td>
+											<td>2024-01-12</td>
+											<td>Library Fee</td>
+											<td>$500</td>
+											<td>M-Pesa</td>
+											<td><span class="badge badge-success">Success</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Content End -->
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="../js/script.js"></script>
+
+</body>
+</html>

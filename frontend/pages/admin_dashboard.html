@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard - Smart School</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dark-theme.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="text-center">SMART SCHOOL</h3>
+            <div class="user-info mt-3">
+                <img src="../assets/default-avatar.png" alt="Admin" class="rounded-circle" width="50">
+                <div class="mt-2">
+                    <h6 class="mb-0">Admin Name</h6>
+                    <small class="text-secondary">System Administrator</small>
+                </div>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="admin_dashboard.html" class="nav-link active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="student_registration.html" class="nav-link">
+                    <i class="fas fa-user-graduate"></i>
+                    Students
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    Teachers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    Classes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="attendance.html" class="nav-link">
+                    <i class="fas fa-calendar-check"></i>
+                    Attendance
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="fees.html" class="nav-link">
+                    <i class="fas fa-money-bill"></i>
+                    Finance
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Reports
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </li>
+            <li class="nav-item mt-4">
+                <a href="../index.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="admin-container">
+            <h1 class="page-title">Admin Dashboard</h1>
+            
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-user-graduate mb-3"></i>
+                            <h5>Total Students</h5>
+                            <h2 data-toggle="counter-up">1500</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-chalkboard-teacher mb-3"></i>
+                            <h5>Total Teachers</h5>
+                            <h2 data-toggle="counter-up">80</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-money-bill-wave mb-3"></i>
+                            <h5>Fee Collection</h5>
+                            <h2>$<span data-toggle="counter-up">150000</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-book-open mb-3"></i>
+                            <h5>Total Classes</h5>
+                            <h2 data-toggle="counter-up">30</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="row">
+                <!-- Recent Admissions -->
+                <div class="col-lg-6">
+                    <div class="table-wrapper">
+                        <h5 class="mb-4">Recent Admissions</h5>
+                        <div class="table-responsive">
+                            <table class="table table-custom">
+
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Class</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Admission data will be loaded dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Fee Payments -->
+                <div class="col-lg-6">
+                    <div class="table-wrapper">
+                        <h5 class="mb-4">Recent Fee Payments</h5>
+                        <div class="table-responsive">
+                            <table class="table table-custom">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Receipt</th>
+                                            <th>Student</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Fee payment data will be loaded dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions-grid">
+
+                                <div class="col-md-3 mb-3">
+                                    <a href="student_registration.html" class="btn btn-primary quick-action-btn btn-block">
+                                        <i class="fa fa-user-plus"></i>
+                                        <div>New Admission</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="#" class="btn btn-primary quick-action-btn btn-block">
+                                        <i class="fa fa-user-tie"></i>
+                                        <div>Add Staff</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="#" class="btn btn-primary quick-action-btn btn-block">
+                                        <i class="fa fa-file-invoice"></i>
+                                        <div>Generate Report</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <a href="#" class="btn btn-primary quick-action-btn btn-block">
+                                        <i class="fa fa-cog"></i>
+                                        <div>Settings</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Stats End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-7 col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mb-5">
+                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Get In Touch</h5>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+254 123 456789</p>
+                        <p><i class="fa fa-envelope mr-2"></i>info@smartschool.com</p>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Student Management</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Staff Management</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Finance</a>
+                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Reports</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white">&copy; <a href="#">Smart School</a>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+
+</body>
+</html>

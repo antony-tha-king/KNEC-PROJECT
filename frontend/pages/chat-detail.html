@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Chat Detail - Smart School</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+	<style>
+		:root {
+			--bg-color: #0f1c24;
+			--card-bg: #1f2c34;
+			--accent: #00a884;
+			--accent-hover: #02846a;
+			--text: #e9edef;
+			--text-secondary: #8696a0;
+			--border: rgba(134, 150, 160, 0.15);
+			--glass-bg: #2a3942;
+			--message-sent: #005c4b;
+			--message-received: #202c33;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Segoe UI', sans-serif;
+		}
+
+		body {
+			background: var(--bg-color);
+			color: var(--text);
+			display: flex;
+			min-height: 100vh;
+		}
+
+		.side-nav {
+			width: 280px;
+			background: var(--card-bg);
+			backdrop-filter: blur(10px);
+			padding: 2rem 1rem;
+			border-right: 1px solid var(--border);
+			position: fixed;
+			height: 100vh;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+		}
+
+		.main-content {
+			margin-left: 280px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+		}
+
+		.chat-header {
+			background: var(--card-bg);
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			border-bottom: 1px solid var(--border);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+		}
+
+		.back-button {
+			color: var(--text);
+			text-decoration: none;
+			width: 36px;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 8px;
+			font-size: 1.1rem;
+			background: var(--glass-bg);
+			transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		.back-button:hover {
+			transform: scale(1.05);
+			background: var(--accent-hover);
+		}
+
+		.chat-info {
+
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.chat-avatar {
+			width: 40px;
+			height: 40px;
+			background: var(--accent);
+			border-radius: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #000000;
+			font-size: 1.1rem;
+			box-shadow: 0 5px 15px rgba(0, 220, 130, 0.2);
+		}
+
+		.messages-container {
+			flex: 1;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 0.8rem;
+			background-color: #0b141a;
+			background-image: 
+				linear-gradient(rgba(0, 168, 132, 0.02) 2px, transparent 2px),2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23255c4b' fill-opacity='0.06' fill-rule='evenodd'/%3E%3C/svg%3E");
+				linear-gradient(90deg, rgba(0, 168, 132, 0.02) 2px, transparent 2px);
+			background-size: 30px 30px;
+			padding: 1rem;
+		}
+
+
+		.message {
+			max-width: 65%;
+			padding: 0.8rem 1rem;
+			border-radius: 10px;
+			position: relative;
+			font-size: 0.95rem;
+			line-height: 1.5;
+			margin-bottom: 0.5rem;
+			animation: messageSlide 0.3s ease forwards;
+		}
+
+		.message.sent {
+			background: var(--message-sent);
+			color: var(--text);
+			margin-left: auto;
+			border-top-right-radius: 2px;
+		}
+
+		.message.sent::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: -8px;
+			width: 0;
+			height: 0;
+			border-left: 8px solid var(--message-sent);
+			border-right: 8px solid transparent;
+			border-bottom: 8px solid transparent;
+		}
+
+		.message.received {
+			background: var(--message-received);
+			color: var(--text);
+			margin-right: auto;
+			border-top-left-radius: 2px;
+		}
+
+		.message.received::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -8px;
+			width: 0;
+			height: 0;
+			border-right: 8px solid var(--message-received);
+			border-left: 8px solid transparent;
+			border-bottom: 8px solid transparent;
+		}
+
+		.message-time {
+			font-size: 0.75rem;
+			color: rgba(255, 255, 255, 0.6);
+			margin-top: 0.3rem;
+			text-align: right;
+		}
+
+		.message-input-container {
+			background: var(--card-bg);
+			padding: 1rem;
+			gap: 1rem;
+			display: flex;
+			align-items: center;
+			border-top: 1px solid var(--border);
+		}
+
+		.message-input {
+			background: var(--glass-bg);
+			border: none;
+			padding: 1rem;
+			border-radius: 25px;
+			color: var(--text);
+			font-size: 0.95rem;
+			flex: 1;
+		}
+
+		.message-input:focus {
+			outline: none;
+			box-shadow: 0 0 0 2px rgba(0, 168, 132, 0.1);
+		}
+
+		.send-button {
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;
+			background: var(--accent);
+			color: #fff;
+			border: none;
+			font-size: 1.2rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+
+		.send-button:hover {
+			background: var(--accent-hover);
+			transform: scale(1.05);
+		}
+
+
+		@keyframes messageSlide {
+			from { 
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to { 
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@media (max-width: 768px) {
+			.side-nav {
+				transform: translateX(-100%);
+				z-index: 1000;
+			}
+
+			.main-content {
+				margin-left: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- Side Navigation (same as chat.html) -->
+	<nav class="side-nav">
+		<div class="user-profile">
+			<div class="user-avatar">
+				<i class="bi bi-person-fill"></i>
+			</div>
+			<div>
+				<h3>John Doe</h3>
+				<small>Student</small>
+			</div>
+		</div>
+		<ul class="nav-links">
+			<li><a href="student_portal.html" class="nav-link"><i class="bi bi-house-door"></i>Dashboard</a></li>
+			<li><a href="chat.html" class="nav-link active"><i class="bi bi-chat"></i>Messages</a></li>
+			<li><a href="attendance.html" class="nav-link"><i class="bi bi-calendar-check"></i>Attendance</a></li>
+			<li><a href="../index.html" class="nav-link"><i class="bi bi-box-arrow-right"></i>Logout</a></li>
+		</ul>
+	</nav>
+
+	<main class="main-content">
+		<div class="chat-header">
+			<a href="chat.html" class="back-button">
+				<i class="bi bi-arrow-left"></i>
+			</a>
+			<div class="chat-info">
+				<div class="chat-avatar">
+					<i class="bi bi-people-fill"></i>
+				</div>
+				<div>
+					<h3>Clerk-Typist Department</h3>
+					<small>25 participants</small>
+				</div>
+			</div>
+		</div>
+
+		<div class="messages-container">
+			<div class="message received">
+				Welcome to the new semester! Here's your updated timetable.
+				<div class="message-time">10:30 AM</div>
+			</div>
+			<div class="message sent">
+				Thank you, received.
+				<div class="message-time">10:32 AM</div>
+			</div>
+		</div>
+
+		<div class="message-input-container">
+			<input type="text" class="message-input" placeholder="Type a message...">
+			<button class="send-button">
+				<i class="bi bi-send"></i>
+			</button>
+		</div>
+	</main>
+
+	<script>
+		document.querySelector('.send-button').addEventListener('click', sendMessage);
+		document.querySelector('.message-input').addEventListener('keypress', function(e) {
+			if (e.key === 'Enter') sendMessage();
+		});
+
+		function sendMessage() {
+			const input = document.querySelector('.message-input');
+			const message = input.value.trim();
+			
+			if (message) {
+				const container = document.querySelector('.messages-container');
+				const messageDiv = document.createElement('div');
+				messageDiv.className = 'message sent';
+				
+				const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+				
+				messageDiv.innerHTML = `
+					${message}
+					<div class="message-time">${time}</div>
+				`;
+				
+				container.appendChild(messageDiv);
+				container.scrollTop = container.scrollHeight;
+				input.value = '';
+				input.focus();
+			}
+		}
+	</script>
+</body>
+</html>
