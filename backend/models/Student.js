@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Op } = require("sequelize");
 const sequelize = require("../config/database");
 const User = require("./User");
 const Role = require("./Role");
@@ -66,6 +66,25 @@ const Student = sequelize.define("Student", {
 }, {
   timestamps: true,
   hooks: {
+    beforeCreate: async (student) => {
+      // Generate admission number: Year + Sequential Number (e.g., 2024001)
+      const currentYear = new Date().getFullYear();
+      const lastStudent = await Student.findOne({
+        where: {
+          studentId: {
+            [Op.like]: `${currentYear}%`
+          }
+        },
+        order: [['studentId', 'DESC']]
+      });
+
+      let nextNumber = '001';
+      if (lastStudent) {
+        const lastNumber = parseInt(lastStudent.studentId.slice(-3));
+        nextNumber = String(lastNumber + 1).padStart(3, '0');
+      }
+      student.studentId = `${currentYear}${nextNumber}`;
+    },
     afterCreate: async (student) => {
       // Assign student role after creation
       const studentRole = await Role.findOne({ where: { name: 'STUDENT' } });

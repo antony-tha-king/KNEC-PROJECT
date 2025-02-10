@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Op } = require("sequelize");
 const sequelize = require("../config/database");
 const User = require("./User");
 const Role = require("./Role");
@@ -71,6 +71,25 @@ const Teacher = sequelize.define("Teacher", {
 }, {
   timestamps: true,
   hooks: {
+    beforeCreate: async (teacher) => {
+      // Generate lecturer number: LEC + Year + Sequential Number (e.g., LEC2024001)
+      const currentYear = new Date().getFullYear();
+      const lastTeacher = await Teacher.findOne({
+        where: {
+          teacherId: {
+            [Op.like]: `LEC${currentYear}%`
+          }
+        },
+        order: [['teacherId', 'DESC']]
+      });
+
+      let nextNumber = '001';
+      if (lastTeacher) {
+        const lastNumber = parseInt(lastTeacher.teacherId.slice(-3));
+        nextNumber = String(lastNumber + 1).padStart(3, '0');
+      }
+      teacher.teacherId = `LEC${currentYear}${nextNumber}`;
+    },
     afterCreate: async (teacher) => {
       // Assign teacher role after creation
       const teacherRole = await Role.findOne({ where: { name: 'TEACHER' } });
