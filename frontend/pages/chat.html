@@ -155,10 +155,12 @@
 		.recipient-input {
 			padding: 10px;
 		}
+
+		.chat-messages {
+			height: 400px; /* Set a fixed height for scrolling */
+			overflow-y: auto; /* Enable vertical scrolling */
+		}
 	</style>
-
-
-
 </head>
 <body>
 	<!-- Sidebar Toggle Button -->
@@ -209,6 +211,12 @@
 					Chat
 				</a>
 			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link" id="aiChatTab">
+					<i class="fas fa-robot"></i>
+					AI Chatbot
+				</a>
+			</li>
 			<li class="nav-item mt-4">
 				<a href="../index.html" class="nav-link text-danger">
 					<i class="fas fa-sign-out-alt"></i>
@@ -222,103 +230,92 @@
 	<div class="main-wrapper" id="mainWrapper">
 		<div class="container-fluid py-4">
 			<div class="chat-container">
-			<div class="row h-100 g-0">
-				<!-- Chat Sidebar -->
-				<div class="col-md-4 col-lg-3 chat-sidebar">
-					<div class="chat-tabs d-flex justify-content-around">
-						<div class="chat-tab active" data-tab="groups">
-							<i class="fas fa-users me-2"></i>Groups
+				<div class="row h-100 g-0">
+					<!-- Chat Sidebar -->
+					<div class="col-md-4 col-lg-3 chat-sidebar">
+						<div class="chat-tabs d-flex justify-content-around">
+							<div class="chat-tab active" data-tab="groups">
+								<i class="fas fa-users me-2"></i>Groups
+							</div>
+							<div class="chat-tab" data-tab="private">
+								<i class="fas fa-user me-2"></i>Private
+							</div>
+							<div class="chat-tab" data-tab="aiChat">
+								<i class="fas fa-robot me-2"></i>AI Chatbot
+							</div>
 						</div>
-						<div class="chat-tab" data-tab="private">
-							<i class="fas fa-user me-2"></i>Private
+
+						<div class="input-section">
+							<div class="search-box">
+								<input type="text" class="form-control search-input" placeholder="Search chats...">
+							</div>
+
+							<div class="recipient-input">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Enter ADM2023001 or LEC2023001" id="recipientInput">
+									<button class="btn btn-primary" id="findUser">
+										<i class="fas fa-search"></i> Find
+									</button>
+								</div>
+								<div class="input-hint">
+									<small>
+										<i class="fas fa-graduation-cap"></i> ADM: Student | <i class="fas fa-chalkboard-teacher"></i> LEC: Teacher
+									</small>
+								</div>
+							</div>
+						</div>
+
+						<div class="chat-list">
+							<!-- Group Chats -->
+							<div class="chat-item active">
+								<div class="d-flex align-items-center">
+									<div class="flex-shrink-0">
+										<i class="fas fa-users fa-2x text-primary"></i>
+									</div>
+									<div class="flex-grow-1 ms-3">
+										<h6 class="mb-0">Clerk-Typist Department</h6>
+										<small class="text-muted" id="memberCount">Loading...</small>
+									</div>
+								</div>
+							</div>
+							<div class="chat-item">
+								<div class="d-flex align-items-center">
+									<div class="flex-shrink-0">
+										<i class="fas fa-users fa-2x text-primary"></i>
+									</div>
+									<div class="flex-grow-1 ms-3">
+										<h6 class="mb-0">First Year Group</h6>
+										<small class="text-muted">Last message: 30 mins ago</small>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<div class="input-section">
-						<div class="search-box">
-							<input type="text" class="form-control search-input" placeholder="Search chats...">
+					<!-- Chat Main -->
+					<div class="col-md-8 col-lg-9 chat-main">
+						<div class="chat-header">
+							<div class="d-flex align-items-center">
+								<div class="flex-shrink-0">
+									<i class="fas fa-users fa-2x text-primary"></i>
+								</div>
+								<div class="flex-grow-1 ms-3">
+									<h5 class="mb-0" id="chatHeading">Groups</h5>
+								</div>
+							</div>
 						</div>
 
-						<div class="recipient-input">
+						<div class="chat-messages">
+							<div class="ai-chat-messages"></div>
+						</div>
+
+						<div class="chat-input">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Enter ADM2023001 or LEC2023001" id="recipientInput">
-								<button class="btn btn-primary" id="findUser">
-									<i class="fas fa-search"></i> Find
+								<input type="text" class="form-control" id="aiUserInput" placeholder="Ask AI...">
+								<button class="btn" id="sendAiMessage">
+									<i class="fas fa-paper-plane"></i>
 								</button>
 							</div>
-							<div class="input-hint">
-								<small>
-									<i class="fas fa-graduation-cap"></i> ADM: Student | <i class="fas fa-chalkboard-teacher"></i> LEC: Teacher
-								</small>
-							</div>
-						</div>
-					</div>
-
-					<div class="chat-list">
-
-						<!-- Group Chats -->
-						<div class="chat-item active">
-							<div class="d-flex align-items-center">
-								<div class="flex-shrink-0">
-									<i class="fas fa-users fa-2x text-primary"></i>
-								</div>
-								<div class="flex-grow-1 ms-3">
-									<h6 class="mb-0">Clerk-Typist Department</h6>
-									<small class="text-muted">Last message: 5 mins ago</small>
-								</div>
-							</div>
-						</div>
-						<div class="chat-item">
-							<div class="d-flex align-items-center">
-								<div class="flex-shrink-0">
-									<i class="fas fa-users fa-2x text-primary"></i>
-								</div>
-								<div class="flex-grow-1 ms-3">
-									<h6 class="mb-0">First Year Group</h6>
-									<small class="text-muted">Last message: 30 mins ago</small>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Chat Main -->
-				<div class="col-md-8 col-lg-9 chat-main">
-					<div class="chat-header">
-						<div class="d-flex align-items-center">
-							<div class="flex-shrink-0">
-								<i class="fas fa-users fa-2x text-primary"></i>
-							</div>
-							<div class="flex-grow-1 ms-3">
-								<h5 class="mb-0">Clerk-Typist Department</h5>
-								<small class="text-muted">32 members</small>
-							</div>
-						</div>
-					</div>
-
-					<div class="chat-messages">
-						<div class="message other">
-							<div class="message-content">
-								<div class="message-sender">John Doe</div>
-								<div class="message-text">Welcome to the new semester!</div>
-								<div class="message-time">10:30 AM</div>
-							</div>
-						</div>
-
-						<div class="message user">
-							<div class="message-content">
-								<div class="message-text">Thank you! Looking forward to it.</div>
-								<div class="message-time">10:32 AM</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="chat-input">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Type a message...">
-							<button class="btn">
-								<i class="fas fa-paper-plane"></i>
-							</button>
 						</div>
 					</div>
 				</div>
@@ -358,21 +355,76 @@
 			}
 		});
 
-		// Toggle between group and private chats
+		// Fetch member count from the database
+		function fetchMemberCount() {
+			// Simulate fetching data from the database
+			const memberCount = 32; // Replace with actual database call
+			document.getElementById('memberCount').textContent = `${memberCount} members`;
+		}
+
+		// Toggle between group, private chats, and AI Chatbot
 		document.querySelectorAll('.chat-tab').forEach(tab => {
 			tab.addEventListener('click', () => {
 				document.querySelectorAll('.chat-tab').forEach(t => t.classList.remove('active'));
 				tab.classList.add('active');
-				
-				const recipientInput = document.querySelector('.recipient-input');
-				if (tab.dataset.tab === 'private') {
-					recipientInput.classList.add('show');
+
+				const aiChatInterface = document.querySelector('.ai-chat-messages');
+				const chatHeading = document.getElementById('chatHeading');
+
+				if (tab.dataset.tab === 'aiChat') {
+					aiChatInterface.classList.remove('d-none');
+					chatHeading.textContent = "AI Chatbot";
 				} else {
-					recipientInput.classList.remove('show');
+					aiChatInterface.classList.add('d-none');
+					chatHeading.textContent = tab.dataset.tab === 'private' ? "Private Chat" : "Groups";
 				}
 			});
 		});
+
+		// Send message to AI Chatbot
+		document.getElementById('sendAiMessage').addEventListener('click', () => {
+			const userInput = document.getElementById('aiUserInput').value;
+			if (userInput) {
+				// Display user message
+				const aiChatMessages = document.querySelector('.ai-chat-messages');
+				aiChatMessages.innerHTML += `<div class="message user"><div class="message-content"><div class="message-text">${userInput}</div></div></div>`;
+				document.getElementById('aiUserInput').value = '';
+
+				// Call the AI Chatbot API
+				fetch("https://openrouter.ai/api/v1/chat/completions", {
+					method: "POST",
+					headers: {
+						"Authorization": "Bearer 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",
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						"model": "google/gemini-2.0-pro-exp-02-05:free",
+						"messages": [
+							{
+								"role": "user",
+								"content": [
+									{
+										"type": "text",
+										"text": userInput
+									}
+								]
+							}
+						]
+					})
+				})
+				.then(response => response.json())
+				.then(data => {
+					// Display AI response
+					const aiResponse = data.choices[0].message.content;
+					aiChatMessages.innerHTML += `<div class="message other"><div class="message-content"><div class="message-text">${aiResponse}</div></div></div>`;
+					aiChatMessages.scrollTop = aiChatMessages.scrollHeight; // Scroll to the bottom
+				})
+				.catch(error => console.error('Error:', error));
+			}
+		});
+
+		// Fetch member count on page load
+		fetchMemberCount();
 	</script>
 </body>
 </html>
-
